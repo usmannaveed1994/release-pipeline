@@ -23,5 +23,6 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           release_name: release_${{ github.ref_name }}
+          body_path: CHANGELOG.md
           draft: false
           prerelease: false

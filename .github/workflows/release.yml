@@ -21,9 +21,9 @@ jobs:
         run: |
           echo "Release notes for version ${{ github.ref_name }}"
           RELEASEVERSION="[${{ github.ref_name }}]"
-          echo "## Version $VERSION"
+          echo "Version: $RELEASEVERSION"
           RELEASEBODY=$(awk '/^## / { if (p) { exit }; if ($2 == $RELEASEVERSION) { p=1; next } } p && NF' CHANGELOG.md)
-          echo "release body: $RELEASEBODY"
+          echo "Release body: $RELEASEBODY"
 
       - name: Create Release
         uses: actions/create-release@v1
@@ -32,6 +32,7 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           release_name: release_${{ github.ref_name }}
-          body_path: CHANGELOG.md
+          body: |
+            ${{ steps.create_release_body.outputs.RELEASEBODY }}
           draft: false
           prerelease: false

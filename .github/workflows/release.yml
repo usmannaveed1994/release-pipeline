@@ -20,9 +20,9 @@ jobs:
         id: create_release_body
         run: |
           echo "Release notes for version ${{ github.ref_name }}"
-          VERSION=[${{ github.ref_name }}]
+          RELEASEVERSION=[${{ github.ref_name }}]
           echo "## Version $VERSION"
-          RELEASEBODY=$(awk -v '/^## / { if (p) { exit }; if ($2 == $VERSION) { p=1; next } } p && NF' CHANGELOG.md)
+          RELEASEBODY=$(awk -v '/^## / { if (p) { exit }; if ($2 == $RELEASEVERSION) { p=1; next } } p && NF' CHANGELOG.md)
           echo "release body: $RELEASEBODY"
 
       - name: Create Release

@@ -16,6 +16,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Create release body
+        id: create_release_body
+        run: |
+          echo "Release notes for version ${{ github.ref_name }}"
+          VERSION=[${{ github.ref_name }}]
+          echo "## Version $VERSION"
+
       - name: Create Release
         uses: actions/create-release@v1
         env:

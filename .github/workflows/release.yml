@@ -22,7 +22,7 @@ jobs:
           echo "Release notes for version ${{ github.ref_name }}"
           VERSION=[${{ github.ref_name }}]
           echo "## Version $VERSION"
-          RELEASEBODY=$(awk '/^## / { if (p) { exit }; if ($2 == $VERSION) { p=1; next } } p && NF' changelog.md)
+          RELEASEBODY=$(awk '/^## / { if (p) { exit }; if ($2 == $VERSION) { p=1; next } } p && NF' CHANGELOG.md)
           echo "release body: $RELEASEBODY"
 
       - name: Create Release

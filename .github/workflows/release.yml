@@ -30,12 +30,10 @@ jobs:
           } >> $GITHUB_OUTPUT
 
       - name: Create Release
-        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref_name }}
-          release_name: release_${{ github.ref_name }}
-          body: "${{ steps.create_release_body.outputs.RELEASEBODY }}"
-          draft: false
-          prerelease: false
+        run: |
+          echo "Creating release for version ${{ github.ref_name }}"
+          echo "${{ steps.create_release_body.outputs.RELEASEBODY }}"
+          gh release create "${{ github.ref_name }}" --title "release_${{ github.ref_name }}" --notes "${{ steps.create_release_body.outputs.RELEASEBODY }}"
+          echo "Release created successfully"

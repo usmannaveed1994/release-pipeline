@@ -32,7 +32,6 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           release_name: release_${{ github.ref_name }}
-          body: |
-            ${{ steps.create_release_body.outputs.RELEASEBODY }}
+          body: "test body 123"
           draft: false
           prerelease: false

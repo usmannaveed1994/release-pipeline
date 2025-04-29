@@ -13,6 +13,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [0.11.1] - 2025-04-29
+
+### Added
+
+- Added feature XYZ
+
+### Changed
+
+### Fixed
+
+- Fixed awk script to read shell variables
+
 ## [0.10.1] - 2025-04-29
 
 ### Added
